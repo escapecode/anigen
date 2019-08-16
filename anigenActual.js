@@ -889,7 +889,8 @@ anigenActual.prototype.eventRenderDone = function(format) {
 	var progressBar = document.getElementById('anigenProgressBar');
 	progressBar.shepherd.setMax(1);
 	progressBar.shepherd.setIndefinite(true);
-	progressBar.shepherd.setValue(1, "Packing ZIP");
+	output_filetype = (svg.svgrender.images.length > 1) ? 'ZIP' : format.toUpperCase();
+	progressBar.shepherd.setValue(1, "Saving " + output_filetype + ' file');
 	
 	document.title = svg.fileName + " - aniGen";
 	
