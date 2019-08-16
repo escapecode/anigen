@@ -20,6 +20,8 @@ function settings() {
 		'previewAutorefresh': false,
 		'selectionboxAutorefresh': true,
 		'loadLayerStates': false,
+
+		'notify': true,
 		
 		'windowsWidth': 256,
 		'treeWidth': 256,
@@ -56,6 +58,7 @@ settings.prototype.loadData = function() {
 	this.data.bottomHeight = parseInt(data[15]);
 	
 	this.data.loadDocumentStates = data[16] && data[16] != '1' ? false : true;
+	this.data.notify = data[17] && data[17] != '1' ? false : true;
 	
 	if(this.data.windowsWidth > window.innerWidth/2) { this.data.windowsWidth = window.innerWidth/2; }
 	if(this.data.treeWidth > window.innerWidth/2) { this.data.treeWidth = window.innerWidth/2; }
@@ -86,8 +89,9 @@ settings.prototype.saveData = function() {
 		
 		this.data.bottomHeight,
 		
-		(this.data.loadDocumentStates ? '1' : '0')
+		(this.data.loadDocumentStates ? '1' : '0'),
 		
+		(this.data.notify ? '1' : '0')
 	];
 		
 	setData('anigenSettings', serialized.join(';'));
@@ -114,6 +118,7 @@ settings.prototype.evaluateOverlay = function(table) {
 	this.set("previewAutorefresh", table.children[5].children[1].children[0].shepherd.state == 1);
 	this.set("selectionboxAutorefresh", table.children[6].children[1].children[0].shepherd.state == 1);
 	this.set("loadDocumentStates", table.children[7].children[1].children[0].shepherd.state == 1);
+	this.set("loadDocumentStates", table.children[8].children[1].children[0].shepherd.state == 1);
 	
 	if(svg && svg.ui) {
 		svg.ui.edit(svg.selected);
