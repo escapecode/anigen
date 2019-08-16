@@ -190,7 +190,7 @@ root.prototype.getZoomReadable = function() {
 	return Math.round(this.zoom * 100) + "%";
 }
 
-// pauses/unpauses animations
+// pauses/plays animations
 root.prototype.pauseToggle = function(unpause) {
 	if(this.svgElement.animationsPaused() && (unpause == true || unpause == null)) {
 		if(popup.closeOnSeek) {
@@ -736,7 +736,7 @@ root.prototype.evaluateSetCurrentValue = function() {
 	}
 	
 	if(!newValue.invalid && (!hasValue || closest.closest.index == null)) {
-		animation.addValue(newValue, closest.progress, newSpline, intensity);	
+		animation.addValue(newValue, closest.progress, newSpline, intensity);
 	}
 	
 	if(anigenManager.classes.windowAnimation.animation == animation) {
@@ -923,27 +923,27 @@ root.prototype.createAnimation = function(owner, type, numeric, flags, other) {
 				case 2:
 					typeText = 'translation';
 					animationElement.setAttribute('type', 'translate');
-					animationElement.setAttribute('values', "0 0;0 0");
+					animationElement.setAttribute('values', "0 0;10 0");
 					break;
 				case 3:
 					typeText = 'rotation';
 					animationElement.setAttribute('type', 'rotate');
-					animationElement.setAttribute('values', "0 " + cx + " " + cy + ";0 " + cx + " " + cy);
+					animationElement.setAttribute('values', "0 " + cx + " " + cy + ";10 " + cx + " " + cy);
 					break;
 				case 4:
 					typeText = 'scale';
 					animationElement.setAttribute('type', 'scale');
-					animationElement.setAttribute('values', "1 1;1 1");
+					animationElement.setAttribute('values', "1 1;10 1");
 					break;
 				case 5:
 					typeText = 'horizontal skew';
 					animationElement.setAttribute('type', 'skewX');
-					animationElement.setAttribute('values', "0;0");
+					animationElement.setAttribute('values', "0;10");
 					break;
 				case 6:
 					typeText = 'vertical skew';
 					animationElement.setAttribute('type', 'skewY');
-					animationElement.setAttribute('values', "0;0");
+					animationElement.setAttribute('values', "0;10");
 					break;
 			}	
 			break;
